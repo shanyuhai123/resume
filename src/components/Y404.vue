@@ -1,0 +1,113 @@
+<template>
+  <section class="four-zero-four">
+    <p :class="item.class" v-for="(item, index) in items" :key="index">
+      <span class="fzf-item" v-for="n in item.children" :key="n"></span>
+    </p>
+  </section>
+</template>
+
+<script>
+export default {
+  name: "y-404",
+  data() {
+    return {
+      items: [
+        { class: "fzf four", children: 3 },
+        { class: "fzf zero", children: 4 },
+        { class: "fzf four", children: 3 }
+      ]
+    };
+  }
+};
+</script>
+
+<style lang="stylus" scoped>
+.four-zero-four
+  height 100%
+  width 100%
+  display flex
+  align-items center
+  justify-content center
+  .fzf
+    width: 10em;
+    height: 10em;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0.5em;
+    position: relative;
+  .fzf-item
+    position: absolute;
+    box-sizing: border-box;
+    filter: opacity(0.8);
+    transition: 0.3s;
+
+.four span:nth-child(1) {
+  height: 80%;
+  width: 20%;
+  left: 10%;
+  background-color: yellowgreen;
+}
+.four span:nth-child(2) {
+  width: 100%;
+  height: 20%;
+  bottom: 30%;
+  background-color: turquoise;
+}
+.four span:nth-child(3) {
+  width: 20%;
+  height: 100%;
+  right: 10%;
+  background-color: pink;
+}
+.zero span:nth-child(1) {
+  width: 20%;
+  height: 100%;
+  left: 10%;
+  background-color: skyblue;
+}
+.zero span:nth-child(2) {
+  width: 100%;
+  height: 20%;
+  top: 10%;
+  background-color: plum;
+}
+.zero span:nth-child(3) {
+  width: 20%;
+  height: 100%;
+  right: 10%;
+  background-color: lightcoral;
+}
+.zero span:nth-child(4) {
+  width: 100%;
+  height: 20%;
+  bottom: 10%;
+  background-color: peachpuff;
+}
+
+.four-zero-four p:hover span {
+  border: 1px solid black;
+  background-color: transparent;
+  filter: opacity(1);
+}
+.four:hover span:nth-child(1) {
+  left: 0;
+}
+.four:hover span:nth-child(2) {
+  bottom: 0;
+}
+.four:hover span:nth-child(3) {
+  right: 0;
+}
+.zero:hover span:nth-child(1) {
+  left: 0;
+}
+.zero:hover span:nth-child(2) {
+  top: 0;
+}
+.zero:hover span:nth-child(3) {
+  right: 0;
+}
+.zero:hover span:nth-child(4) {
+  bottom: 0;
+}
+</style>
