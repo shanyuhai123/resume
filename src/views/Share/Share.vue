@@ -10,10 +10,12 @@
     <YShareNav
       class="share-nav"
       @closeNav="navShow = !navShow"
+      @download="download"
       :link="link"
+      :source="source"
       v-if="navShow"
     ></YShareNav>
-    <share-page v-if="!shareLoading"></share-page>
+    <share-page v-if="!shareLoading" ref="pdfPage"></share-page>
   </div>
 </template>
 
@@ -21,7 +23,7 @@
 import SharePage from "@/views/Share/Page.vue";
 import YShareNav from "@/components/SharePage/YShareNav.vue";
 
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "share",
   components: {
@@ -31,11 +33,15 @@ export default {
   mounted() {
     this.getShareInfo();
   },
+  computed: {
+    ...mapGetters("share", ["profile"])
+  },
   data() {
     return {
       shareLoading: true,
       navShow: true,
-      link: "http://resume.shanyuhai.top"
+      link: "http://resume.shanyuhai.top",
+      source: "https://github.com/shanyuhai123/resume"
     };
   },
   methods: {
@@ -54,6 +60,12 @@ export default {
           // eslint-disable-next-line no-console
           console.log(err);
         });
+    },
+    download() {
+      const {
+        base: { name: user }
+      } = this.profile;
+      this.$pdf(this.$refs.pdfPage.$el, user);
     }
   }
 };

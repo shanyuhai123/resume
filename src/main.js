@@ -6,6 +6,7 @@ import store from "./store/index";
 
 import "./plugins/axios";
 import "./plugins/vuetify";
+import "./plugins/pdf";
 
 Vue.config.productionTip = false;
 

@@ -22,11 +22,26 @@
     </v-tooltip>
     <v-tooltip left>
       <template v-slot:activator="{ on }">
-        <v-btn small dark color="indigo" v-on="on">
-          <v-icon>cloud_download</v-icon>
+        <v-btn small dark color="indigo" v-on="on" @click="$emit('download')">
+          下载简历
         </v-btn>
       </template>
-      <span>下载简历(建设中)</span>
+      <span>下载简历</span>
+    </v-tooltip>
+    <v-tooltip left>
+      <template v-slot:activator="{ on }">
+        <v-btn
+          small
+          dark
+          color="purple darken-4"
+          v-on="on"
+          :href="source"
+          target="_blank"
+        >
+          查看源码
+        </v-btn>
+      </template>
+      <span>前往 Github 查看源码</span>
     </v-tooltip>
     <v-tooltip left>
       <template v-slot:activator="{ on }">
@@ -44,6 +59,10 @@ export default {
   name: "y-share-nav",
   props: {
     link: {
+      type: String,
+      required: true
+    },
+    source: {
       type: String,
       required: true
     }
