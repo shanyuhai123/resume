@@ -12,6 +12,7 @@ const state = {
 };
 const getters = {
   profileId: state => state.profileId,
+  nickname: state => state.name,
   name: state => {
     if (state.base.name) {
       return state.base.name;

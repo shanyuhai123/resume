@@ -36,6 +36,11 @@ const router = new Router({
       path: "/shares",
       name: "shares",
       component: () => import("./views/Share/Share.vue")
+    },
+    {
+      path: "/market",
+      name: "market",
+      component: () => import("./views/Market/Market.vue")
     }
   ]
 });
